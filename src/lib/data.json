@@ -1,19 +1,20 @@
-{"positiveText": [
-    "looking good!",
-    "keep it up!",
-    "no way i'd guess that password",
-    "you're a password pro!"
-],
-"negativeText": [
-    "keep going...",
-    "you can do better than that...",
-    "you're getting there...",
-    "almost there...",
-    "you're making progress...",
-    "keep pushing yourself...",
-    "you're getting closer...",
-    "just a little more effort...",
-    "keep working at it...",
-    "you're on the right track..."
-]
+{
+	"positiveText": [
+		"looking good!",
+		"keep it up!",
+		"no way i'd guess that password",
+		"you're a password pro!"
+	],
+	"negativeText": [
+		"keep going...",
+		"you can do better than that...",
+		"you're getting there...",
+		"almost there...",
+		"you're making progress...",
+		"keep pushing yourself...",
+		"you're getting closer...",
+		"just a little more effort...",
+		"keep working at it...",
+		"you're on the right track..."
+	]
 }

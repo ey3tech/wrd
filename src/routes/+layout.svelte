@@ -1,5 +1,5 @@
 <script>
-    import 'uno.css'
+import "uno.css";
 </script>
 
 <slot/>
