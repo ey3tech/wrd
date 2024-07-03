@@ -5,7 +5,6 @@ import {
 	presetIcons,
 	presetTypography,
 	presetUno,
-	presetWebFonts,
 	transformerDirectives,
 	transformerVariantGroup,
 } from "unocss";
@@ -27,17 +26,14 @@ export default defineConfig({
 			// ...
 		},
 	},
+	rules: [
+		["font-sans", {'font-family': 'Clash Display, sans-serif'}],
+	],
 	presets: [
 		presetUno(),
 		presetAttributify(),
 		presetIcons(),
 		presetTypography(),
-		presetWebFonts({
-			provider: "fontshare",
-			fonts: {
-				sans: "Clash Display",
-			},
-		}),
 	],
 	transformers: [transformerDirectives(), transformerVariantGroup()],
 });
