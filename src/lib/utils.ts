@@ -46,7 +46,7 @@ export function calculateStrength(password: string) {
 	const poolSize = calculatePoolSize(password);
 	const lengthFactor = Math.min(password.length / 10, 1); // consider longer passwords stronger
 	const complexityFactor = Math.min(
-		(new Set(password.split("")).size / (poolSize || 1)) * 2.5,
+		(new Set(password.split("")).size / (password.length || 1)) * 2.5,
 		1,
 	); // consider passwords with more character variety stronger
 
