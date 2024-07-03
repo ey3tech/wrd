@@ -24,12 +24,13 @@ let showPassword = false;
 
 const passwordStrength = writable(0);
 const passwordEntropy = writable(0);
-const crackTime = writable("instant");
+const crackTime = writable("an instant");
 const message = writable("");
 const guesses_per_second = 800_000_000_000;
 
-let wordlist: FuzzySet = FuzzySet();
+let wordlist: FuzzySet | null = null;
 onMount(() => {
+    if (wordlist) return;
 	fetch("/wordlist.txt")
 		.then((response) => response.text())
 		.then((text) => {
@@ -39,18 +40,16 @@ onMount(() => {
 
 $: passwordEntropy.set(calculateEntropy(password));
 
-$: crackTimeSeconds = possibilities / guesses_per_second;
 $: passwordStrength.set(calculateStrength(password) * 100);
-$: possibilities = Math.ceil(2 ** $passwordEntropy);
 
-$: crackTime.set(humanizeDuration(crackTimeSeconds));
+$: possibilities = Math.ceil(2 ** $passwordEntropy)
+$: crackTime.set(humanizeDuration((Math.ceil(2 ** $passwordEntropy) / guesses_per_second) * ($passwordStrength/100)));
 
-$: true_pool = new Set(password.split(""));
 $: if (password.length > 50) {
 	message.set("are you even going to remember this??");
-} else if (true_pool.size < password.length * 0.5) {
+} else if (new Set(password.split("")).size < password.length * 0.75) {
 	message.set("try adding more diverse characters to your password");
-} else if (wordlist.get(password, null, 0.65)) {
+} else if (wordlist?.get(password, null, 0.65)) {
 	message.set("your password is a common one, try something else");
 } else {
 	if (password.length === 0) {
