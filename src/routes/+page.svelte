@@ -93,6 +93,7 @@ $: if (password.length > 50) {
         <button
             on:click={() => (showPassword = !showPassword)}
             class="text-md b-2 b-transparent b-solid min-w-12 h-12 rounded-lg p-2 bg-op-0 hover:backdrop-blur-sm hover:bg-op-25 bg-white hover:b-neutral-300 transition-100 color-white active:scale-90"
+            aria-label="toggle password visibility"
             >{#if showPassword}
                 <EyeOpen />
             {:else}
